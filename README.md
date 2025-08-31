@@ -1,1 +1,249 @@
 # section-8-ngo-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section-8 NGO Registration Madhya Pradesh</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<!-- Header -->
+<header class="bg-blue-800 text-white p-6">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Section-8 NGO Registration Guide - Madhya Pradesh</h1>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="#overview" class="hover:text-gray-300">Overview</a></li>
+                <li><a href="#process" class="hover:text-gray-300">Process</a></li>
+                <li><a href="#documents" class="hover:text-gray-300">Documents</a></li>
+                <li><a href="#compliance" class="hover:text-gray-300">Compliance</a></li>
+                <li><a href="#funds" class="hover:text-gray-300">Fund Flow</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Banner -->
+<section class="bg-blue-100 p-12 text-center">
+    <h2 class="text-3xl font-bold mb-4">Step-by-Step Section-8 Company Registration in Madhya Pradesh</h2>
+    <p class="text-lg text-gray-700">Interactive guide with flowcharts, timelines, and checklists for NGO registration and compliance.</p>
+</section>
+
+<!-- Overview Section -->
+<section id="overview" class="container mx-auto p-8">
+    <h3 class="text-2xl font-semibold mb-4">Overview & NGO Types</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded shadow">
+            <img src="https://img.icons8.com/color/48/000000/trust.png" class="mb-2">
+            <h4 class="font-bold text-lg mb-2">Public Trust</h4>
+            <p>State governed, requires trustees, suitable for charities.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+            <img src="https://img.icons8.com/color/48/000000/group.png" class="mb-2">
+            <h4 class="font-bold text-lg mb-2">Society</h4>
+            <p>Member-based organization, governed by Societies Act, needs MOA & Rules.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+            <img src="https://img.icons8.com/color/48/000000/company.png" class="mb-2">
+            <h4 class="font-bold text-lg mb-2">Section-8 Company</h4>
+            <p>Non-profit company under Companies Act, offers high credibility with corporate donors.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Process Flowchart & Explanation -->
+<section id="process" class="bg-gray-100 p-8">
+    <h3 class="text-2xl font-semibold mb-6">Registration Process & Department Links</h3>
+    <div class="mermaid">
+        graph TD
+        A[Choose Name & Prepare MoA/AoA] --> B[Obtain DSC & DIN]
+        B --> C[Apply via SPICe+ (Part A & B)]
+        C --> D[Certificate of Incorporation & Section-8 License]
+        D --> E[Apply PAN & TAN]
+        E --> F[Open Bank Account]
+        F --> G[Apply for 12A / 80G]
+        G --> H[FCRA Registration (Optional)]
+    </div>
+    <div class="mt-6 space-y-4">
+        <p><strong>Step 1: Choose Name & Prepare MoA/AoA:</strong> Decide on a unique name and draft Memorandum and Articles of Association. <a href="https://www.mca.gov.in/" class="text-blue-600 underline">MCA Name Approval</a></p>
+        <p><strong>Step 2: Obtain DSC & DIN:</strong> All directors must have Digital Signature Certificate (DSC) and DIN. <a href="https://www.mca.gov.in/" class="text-blue-600 underline">MCA DIN Portal</a></p>
+        <p><strong>Step 3: SPICe+ Filing:</strong> Submit Part A (Name) and Part B (MOA/AOA). <a href="https://www.mca.gov.in/mcafoportal/showCheckCompanyName.do" class="text-blue-600 underline">SPICe+ Portal</a></p>
+        <p><strong>Step 4: Certificate of Incorporation & Section-8 License:</strong> Issued by Registrar of Companies (Madhya Pradesh). <a href="https://www.mca.gov.in/" class="text-blue-600 underline">ROC MP</a></p>
+        <p><strong>Step 5: Apply PAN & TAN:</strong> Obtain PAN & TAN in NGO name for tax compliance. <a href="https://www.incometaxindia.gov.in/" class="text-blue-600 underline">Income Tax Portal</a></p>
+        <p><strong>Step 6: Open Bank Account:</strong> Provide incorporation certificate, PAN, MoA/AOA, and board resolution. <a href="https://www.onlinesbi.com/" class="text-blue-600 underline">SBI Bank</a></p>
+        <p><strong>Step 7: Apply for 12A / 80G:</strong> Tax exemption application. <a href="https://www.incometaxindia.gov.in/" class="text-blue-600 underline">Income Tax Portal</a></p>
+        <p><strong>Step 8: FCRA Registration (Optional):</strong> For foreign funding, register via FCRA portal. <a href="https://fcraonline.nic.in/" class="text-blue-600 underline">FCRA Online</a></p>
+        <button id="openVideoModalTimeline" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Watch Video</button>
+    </div>
+</section>
+
+<!-- Timeline / Gantt Chart -->
+<section id="timeline" class="container mx-auto p-8">
+    <h3 class="text-2xl font-semibold mb-4">Registration Timeline</h3>
+    <canvas id="timelineChart" class="bg-white p-4 rounded shadow"></canvas>
+</section>
+
+<script>
+const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+const timelineChart = new Chart(timelineCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Name Approval', 'DSC/DIN', 'SPICe+ Filing', 'Incorporation', 'PAN/TAN', 'Bank Account', '12A/80G', 'FCRA'],
+        datasets: [{
+            label: 'Estimated Duration (days)',
+            data: [5, 3, 7, 5, 4, 3, 10, 20],
+            backgroundColor: '#3b82f6'
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { x: { beginAtZero: true } }
+    }
+});
+</script>
+
+<!-- Documents Checklist Section -->
+<section id="documents" class="container mx-auto p-8">
+    <h3 class="text-2xl font-semibold mb-4">Documents Checklist & Departments</h3>
+    <table class="min-w-full bg-white rounded shadow">
+        <thead>
+            <tr class="bg-blue-200">
+                <th class="py-2 px-4">Category</th>
+                <th class="py-2 px-4">Required Documents</th>
+                <th class="py-2 px-4">Department / Website</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y">
+            <tr>
+                <td class="py-2 px-4 font-medium">Incorporation</td>
+                <td class="py-2 px-4">MoA & AoA, Section-8 License Application, Board Resolution</td>
+                <td class="py-2 px-4"><a href="https://www.mca.gov.in/" class="text-blue-600 underline">MCA</a></td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 font-medium">Identity</td>
+                <td class="py-2 px-4">Director Aadhaar, PAN, Passport</td>
+                <td class="py-2 px-4"><a href="https://www.mca.gov.in/" class="text-blue-600 underline">MCA</a></td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 font-medium">Office Proof</td>
+                <td class="py-2 px-4">Rent Agreement, Utility Bill, NOC</td>
+                <td class="py-2 px-4"><a href="https://www.mca.gov.in/" class="text-blue-600 underline">MCA / Local ROC</a></td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 font-medium">Tax</td>
+                <td class="py-2 px-4">PAN of NGO, Audited/Proposed Budget, Activity Report</td>
+                <td class="py-2 px-4"><a href="https://www.incometaxindia.gov.in/" class="text-blue-600 underline">Income Tax Dept</a></td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 font-medium">Bank</td>
+                <td class="py-2 px-4">Incorporation Certificate, Board Resolution, MoA/AoA</td>
+                <td class="py-2 px-4"><a href="https://www.onlinesbi.com/" class="text-blue-600 underline">SBI</a></td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 font-medium">FCRA (if needed)</td>
+                <td class="py-2 px-4">FC-3 Application, Audited Accounts, Activity Reports, Director KYC, Bank Details</td>
+                <td class="py-2 px-4"><a href="https://fcraonline.nic.in/" class="text-blue-600 underline">FCRA Online</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="downloadPdf" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Download PDF Checklist</button>
+</section>
+
+<!-- Compliance Section -->
+<section id="compliance" class="bg-gray-100 p-8">
+    <h3 class="text-2xl font-semibold mb-4">Ongoing Compliance</h3>
+    <ul class="list-disc list-inside space-y-2">
+        <li>File ITR-7 annually.</li>
+        <li>Maintain books of accounts, donor receipts, and minutes.</li>
+        <li>Annual audit; Form 10B submission if applicable.</li>
+        <li>FCRA: FC-4 annual return & separate designated account.</li>
+        <li>Report suspicious/high-value transactions to FIU-IND.</li>
+    </ul>
+    <button id="openVideoModalCompliance" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Watch Video</button>
+</section>
+
+<!-- Fund Flow Charts -->
+<section id="funds" class="container mx-auto p-8">
+    <h3 class="text-2xl font-semibold mb-6">Fund Flow</h3>
+    <canvas id="fundChart" class="bg-white p-4 rounded shadow"></canvas>
+</section>
+
+<script>
+const fundCtx = document.getElementById('fundChart').getContext('2d');
+const fundChart = new Chart(fundCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Domestic Donations', 'Foreign Contributions', 'Grants', 'Other Income'],
+        datasets: [{
+            data: [50, 20, 20, 10],
+            backgroundColor: ['#3b82f6','#f97316','#10b981','#f59e0b']
+        }]
+    },
+    options: { responsive: true }
+});
+</script>
+
+<!-- Floating Watch Video Button -->
+<button id="openVideoModalFloating" class="fixed bottom-6 right-6 bg-red-600 text-white px-5 py-3 rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition-transform z-50">
+    Watch Video
+</button>
+
+<!-- Video Modal -->
+<div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50">
+    <div class="bg-white rounded-lg max-w-3xl w-full p-4 relative">
+        <button id="closeVideoModal" class="absolute top-2 right-2 text-gray-700 font-bold text-2xl">&times;</button>
+        <div class="aspect-w-16 aspect-h-9">
+            <iframe id="processVideo" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+// PDF Download
+document.getElementById('downloadPdf').addEventListener('click', () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Section-8 NGO Registration Checklist - Madhya Pradesh', 10, 20);
+    doc.setFontSize(12);
+    doc.text('1. Incorporation: MoA & AoA, Section-8 License Application, Board Resolution', 10, 30);
+    doc.text('2. Identity: Director Aadhaar, PAN, Passport', 10, 40);
+    doc.text('3. Office Proof: Rent Agreement, Utility Bill, NOC', 10, 50);
+    doc.text('4. Tax: PAN of NGO, Audited/Proposed Budget, Activity Report', 10, 60);
+    doc.text('5. Bank: Incorporation Certificate, Board Resolution, MoA/AoA', 10, 70);
+    doc.text('6. FCRA (if needed): FC-3 Application, Audited Accounts, Activity Reports, Director KYC, Bank Details', 10, 80);
+    doc.save('NGO_Checklist_MP.pdf');
+});
+
+// Video Modal Functionality
+const videoModal = document.getElementById('videoModal');
+const videoFrame = document.getElementById('processVideo');
+
+function openVideoModal() {
+    videoFrame.src = "https://www.youtube.com/embed/BrNbynfPLW0";     videoModal.classList.remove('hidden');
+    videoModal.classList.add('flex');
+}
+
+function closeVideoModal() {
+    videoFrame.src = "";
+    videoModal.classList.remove('flex');
+    videoModal.classList.add('hidden');
+}
+
+// Buttons
+document.getElementById('openVideoModalFloating').addEventListener('click', openVideoModal);
+document.getElementById('openVideoModalTimeline').addEventListener('click', openVideoModal);
+document.getElementById('openVideoModalCompliance').addEventListener('click', openVideoModal);
+document.getElementById('closeVideoModal').addEventListener('click', closeVideoModal);
+</script>
+
+</body>
+</html>
